@@ -227,7 +227,7 @@ internal sealed class McpServer : McpJsonRpcEndpoint, IMcpServer
                     result.Tools.Add(tool.ProtocolTool);
                 }
 
-                if (originalListToolsHandler is not null)
+                if (originalListToolsHandler is not null) // Here, the previously generated handler will be recursively called
                 {
                     string? nextCursor = null;
                     do

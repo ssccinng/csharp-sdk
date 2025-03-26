@@ -5,15 +5,29 @@ using OpenAI;
 
 // Connect to an MCP server
 Console.WriteLine("Connecting client to MCP 'everything' server");
+//var mcpClient = await McpClientFactory.CreateAsync(
+//    new()
+//    {
+//        Id = "everything",
+//        Name = "Everything",
+//        TransportType = TransportTypes.StdIo,
+//        TransportOptions = new()
+//        {
+//            ["command"] = "npx", ["arguments"] = "-y @modelcontextprotocol/server-everything",
+//        }
+//    });
+
 var mcpClient = await McpClientFactory.CreateAsync(
     new()
     {
         Id = "everything",
         Name = "Everything",
-        TransportType = TransportTypes.StdIo,
+        TransportType = TransportTypes.Sse,
+        Location = "http://localhost:3001/sse",
         TransportOptions = new()
         {
-            ["command"] = "npx", ["arguments"] = "-y @modelcontextprotocol/server-everything",
+            ["command"] = "npx",
+            ["arguments"] = "-y @modelcontextprotocol/server-everything",
         }
     });
 

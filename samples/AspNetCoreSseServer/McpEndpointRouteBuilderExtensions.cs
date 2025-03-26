@@ -13,7 +13,7 @@ public static class McpEndpointRouteBuilderExtensions
         IMcpServer? server = null;
         SseResponseStreamTransport? transport = null;
         var loggerFactory = endpoints.ServiceProvider.GetRequiredService<ILoggerFactory>();
-        var mcpServerOptions = endpoints.ServiceProvider.GetRequiredService<IOptions<McpServerOptions>>();
+        var mcpServerOptions = endpoints.ServiceProvider.GetRequiredService<IOptions<McpServerOptions>>(); // The handler will be indefinitely stored in this option
 
         var routeGroup = endpoints.MapGroup("");
 
